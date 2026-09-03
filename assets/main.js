@@ -394,33 +394,42 @@
 
       var heads = [];
       var accentColor = new THREE.Color(rainColor());
+      var whiteColor = new THREE.Color(0xffffff);
 
-      // Each (column, trail-slot) is permanently assigned '0' or '1' at creation,
-      // so a slot keeps its character as it falls and loops — same trick real
-      // matrix-rain implementations use rather than re-rolling every frame.
-      // Each column is also permanently assigned a depth tier (near/mid/far),
-      // matching the depth band it was seeded into, so foreground columns can
-      // render with a sharp glyph texture and background columns with a
-      // pre-blurred one — real depth-of-field, baked into the texture rather
-      // than faked with a runtime blur shader.
+      // A representative slice of the site's original glyph set (full katakana
+      // + alphanumeric + symbol mix lives in the 2D fallback below) — enough
+      // variety to read as real Matrix code rather than a wall of 0s and 1s,
+      // without needing dozens of texture groups.
+      var GLYPH_POOL = ['0', '1', '8', '#', 'ア', 'カ', 'ナ', 'ヴ'];
+      var GLYPH_COUNT = GLYPH_POOL.length;
+
+      // Each (column, trail-slot) is permanently assigned one glyph at
+      // creation, so a slot keeps its character as it falls and loops — same
+      // trick real matrix-rain implementations use rather than re-rolling
+      // every frame. Each column is also permanently assigned a depth tier
+      // (near/mid/far), matching the depth band it was seeded into, so
+      // foreground columns render with a sharp glyph texture and background
+      // columns with a pre-blurred one — real depth-of-field, baked into the
+      // texture rather than faked with a runtime blur shader.
       var depthTierOf = [0, 1, 2, 2]; // maps depths[] index -> tier (0=near,1=mid,2=far)
       var TIER_COUNT = 3;
-      var digitBit = new Uint8Array(TOTAL);
+      var GROUP_COUNT = TIER_COUNT * GLYPH_COUNT;
+      var glyphIdxOf = new Uint8Array(TOTAL);
       var tierOf = new Uint8Array(TOTAL);
       var bufIndex = new Int32Array(TOTAL);
-      var groupCount = new Array(TIER_COUNT * 2).fill(0); // index = tier*2 + digit
+      var groupCount = new Array(GROUP_COUNT).fill(0); // index = tier*GLYPH_COUNT + glyphIdx
       for (var k = 0; k < TOTAL; k++) {
         var col = Math.floor(k / TRAIL);
         var tier = depthTierOf[col % depths.length];
-        var digit = Math.random() < 0.5 ? 0 : 1;
-        digitBit[k] = digit;
+        var glyphIdx = (Math.random() * GLYPH_COUNT) | 0;
+        glyphIdxOf[k] = glyphIdx;
         tierOf[k] = tier;
-        var gi = tier * 2 + digit;
+        var gi = tier * GLYPH_COUNT + glyphIdx;
         bufIndex[k] = groupCount[gi]++;
       }
 
       var groupPositions = [], groupColors = [];
-      for (var gi2 = 0; gi2 < TIER_COUNT * 2; gi2++) {
+      for (var gi2 = 0; gi2 < GROUP_COUNT; gi2++) {
         groupPositions.push(new Float32Array(groupCount[gi2] * 3));
         groupColors.push(new Float32Array(groupCount[gi2] * 3));
       }
@@ -450,6 +459,7 @@
       }
       seedColumns();
 
+      var tmpHeadColor = new THREE.Color();
       function layout() {
         for (var c = 0; c < COLUMNS; c++) {
           var head = heads[c];
@@ -458,14 +468,24 @@
             var b = Math.max(0, 1 - i / TRAIL);
             b = i === 0 ? 1.6 : b * b;
             var x = head.x, y = head.y + i * SPACING, z = head.z;
-            var gi = tierOf[k] * 2 + digitBit[k];
+            var gi = tierOf[k] * GLYPH_COUNT + glyphIdxOf[k];
             var pos = groupPositions[gi];
             var colArr = groupColors[gi];
             var idx = bufIndex[k] * 3;
             pos[idx] = x; pos[idx + 1] = y; pos[idx + 2] = z;
-            colArr[idx] = accentColor.r * b;
-            colArr[idx + 1] = accentColor.g * b;
-            colArr[idx + 2] = accentColor.b * b;
+            if (i === 0) {
+              // the leading character of each column glows near-white, the
+              // classic Matrix "head" — a genuine white blend, not just a
+              // brightness bump on the accent colour
+              tmpHeadColor.copy(accentColor).lerp(whiteColor, 0.65);
+              colArr[idx] = tmpHeadColor.r;
+              colArr[idx + 1] = tmpHeadColor.g;
+              colArr[idx + 2] = tmpHeadColor.b;
+            } else {
+              colArr[idx] = accentColor.r * b;
+              colArr[idx + 1] = accentColor.g * b;
+              colArr[idx + 2] = accentColor.b * b;
+            }
           }
         }
       }
@@ -475,16 +495,17 @@
       // into the texture itself (canvas filter, at draw time), not a runtime
       // effect, so it's cheap and can't misbehave per-frame
       var blurByTier = [0, 1.6, 3.2];
-      var texByTierDigit = [];
+      var texByTierGlyph = [];
       for (var ti = 0; ti < TIER_COUNT; ti++) {
-        texByTierDigit.push([
-          makeGlyphTexture('0', '#ffffff', blurByTier[ti]),
-          makeGlyphTexture('1', '#ffffff', blurByTier[ti])
-        ]);
+        var row = [];
+        for (var gch = 0; gch < GLYPH_COUNT; gch++) {
+          row.push(makeGlyphTexture(GLYPH_POOL[gch], '#ffffff', blurByTier[ti]));
+        }
+        texByTierGlyph.push(row);
       }
 
       var geos = [];
-      for (var gi3 = 0; gi3 < TIER_COUNT * 2; gi3++) {
+      for (var gi3 = 0; gi3 < GROUP_COUNT; gi3++) {
         var g = new THREE.BufferGeometry();
         g.setAttribute('position', new THREE.BufferAttribute(groupPositions[gi3], 3));
         g.setAttribute('color', new THREE.BufferAttribute(groupColors[gi3], 3));
@@ -508,9 +529,9 @@
       // texture reading smaller/dimmer than the crisp one at the same size
       var sizeByTier = [6.2, 6.6, 7.2];
       for (var ti2 = 0; ti2 < TIER_COUNT; ti2++) {
-        for (var dg = 0; dg < 2; dg++) {
-          var idx2 = ti2 * 2 + dg;
-          scene.add(new THREE.Points(geos[idx2], rainMaterial(texByTierDigit[ti2][dg], sizeByTier[ti2])));
+        for (var gch2 = 0; gch2 < GLYPH_COUNT; gch2++) {
+          var idx2 = ti2 * GLYPH_COUNT + gch2;
+          scene.add(new THREE.Points(geos[idx2], rainMaterial(texByTierGlyph[ti2][gch2], sizeByTier[ti2])));
         }
       }
 

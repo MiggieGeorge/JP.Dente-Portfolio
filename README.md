@@ -102,18 +102,12 @@ To update later, drag the folder again (or connect it to GitHub as in Option B).
   GitHub Pages: *Settings → Pages → Custom domain*.
 - **Fonts** load from Google Fonts and fall back to system fonts offline.
 
-## After you deploy: two placeholder URLs to fix
+## Live
 
-`index.html` has two spots using `https://example.com/` as a placeholder, because the
-real URL didn't exist yet when this was built:
-
-1. `<meta property="og:url" ...>` in the `<head>`
-2. `"url"` in the JSON-LD `<script type="application/ld+json">` block right below it
-
-Once the site is live, replace both with the real address, and change `og:image` /
-`twitter:image` / the JSON-LD `"image"` from a relative path to a full URL (e.g.
-`https://yoursite.netlify.app/assets/og-image.jpg`) — link previews on LinkedIn, Slack,
-etc. need an absolute image URL to work.
+Deployed at **https://miggiegeorge.github.io/JP.Dente-Portfolio/** — `og:url`, the JSON-LD
+`"url"`, and the `og:image`/`twitter:image`/JSON-LD `"image"` paths are all set to this
+real address. If the site ever moves to a different URL, update those same spots in
+`index.html`'s `<head>`.
 
 ## What else got added
 

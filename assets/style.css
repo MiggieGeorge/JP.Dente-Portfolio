@@ -216,6 +216,22 @@ section + section { padding-top: 0; }
 }
 @keyframes blink { 50% { opacity: 0; } }
 
+.position-line {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  opacity: 0.85;
+  margin: 0 0 14px;
+}
+.lead.statement {
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  max-width: none;
+}
+
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 
 .btn {
@@ -306,6 +322,15 @@ section + section { padding-top: 0; }
 
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 760px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+.step-num {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
 
 /* ---------- projects ---------- */
 .project {
@@ -535,7 +560,7 @@ footer {
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   /* photo first on small screens. must target the wrapper, since that is the grid child */
   .portrait-wrap { max-width: 230px; order: -1; justify-self: start; }
-  .grid-2, .grid-3, .contact-grid { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4, .contact-grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   section { padding: 60px 0; }
   .hero { padding: 60px 0 50px; }

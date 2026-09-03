@@ -331,6 +331,17 @@ section + section { padding-top: 0; }
   opacity: 0.75;
   margin-bottom: 8px;
 }
+.in-progress-badge {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
 
 /* ---------- projects ---------- */
 .project {
@@ -447,6 +458,29 @@ section + section { padding-top: 0; }
 .stat .num { font-variant-numeric: tabular-nums; }
 
 .cert-list { list-style: none; padding: 0; margin: 0; }
+.cert-category-heading {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.85;
+  margin: 22px 0 6px;
+}
+.cert-category-heading:first-of-type { margin-top: 4px; }
+.cert-more { margin-top: 14px; }
+.cert-more summary {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  cursor: pointer;
+  padding: 8px 0;
+  list-style: none;
+}
+.cert-more summary::-webkit-details-marker { display: none; }
+.cert-more summary::before { content: "+ "; }
+.cert-more[open] summary::before { content: "\2212 "; }
+.cert-more summary:hover { color: var(--text); }
 .cert-list li {
   display: flex;
   gap: 12px;

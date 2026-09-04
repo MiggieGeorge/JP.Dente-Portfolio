@@ -168,199 +168,136 @@
   </div>
 </section>
 
+<!-- ============ TECHNICAL FOCUS ============ -->
+<section id="technical-focus">
+  <div class="wrap reveal">
+    <p class="eyebrow">02 / Technical Focus</p>
+    <h2>Where I focus</h2>
+    <p class="lead" style="margin-top:14px; margin-bottom:30px;">
+      Four areas that make up the actual shape of my career so far &mdash; where I&rsquo;ve
+      spent the most time, and where I&rsquo;m deliberately investing more.
+    </p>
+    <div class="grid-4">
+      <div class="card focus-card">
+        <h3 style="font-size:1.05rem; margin-bottom:8px;">IT Support</h3>
+        <p style="color:var(--muted); font-size:0.87rem; margin-bottom:12px;">
+          Where I started, and still the foundation: over a decade of hands-on troubleshooting,
+          remote desktop support, and service desk operations across global retail and
+          enterprise environments.
+        </p>
+        <ul class="tags" style="gap:6px;">
+          <li>Hardware &amp; Software Troubleshooting</li>
+          <li>Remote Desktop Support</li>
+          <li>Service Desk Operations</li>
+        </ul>
+      </div>
+      <div class="card focus-card">
+        <h3 style="font-size:1.05rem; margin-bottom:8px;">Networking</h3>
+        <p style="color:var(--muted); font-size:0.87rem; margin-bottom:12px;">
+          Practical network troubleshooting from the service desk side, now being built out
+          formally through my BSIT major in Network &amp; Cybersecurity.
+        </p>
+        <ul class="tags" style="gap:6px;">
+          <li>Network Troubleshooting</li>
+          <li>In active coursework</li>
+        </ul>
+      </div>
+      <div class="card focus-card">
+        <h3 style="font-size:1.05rem; margin-bottom:8px;">Cybersecurity</h3>
+        <p style="color:var(--muted); font-size:0.87rem; margin-bottom:12px;">
+          Where the career is heading: the full Google Cybersecurity Professional Certificate,
+          plus two shipped projects &mdash; a malware/phishing scanner and a security awareness
+          platform &mdash; not just coursework.
+        </p>
+        <ul class="tags" style="gap:6px;">
+          <li>Phishing &amp; Malware Detection</li>
+          <li>SIEM &amp; IDS Concepts</li>
+          <li>Security Awareness</li>
+        </ul>
+      </div>
+      <div class="card focus-card">
+        <h3 style="font-size:1.05rem; margin-bottom:8px;">Automation &amp; AI</h3>
+        <p style="color:var(--muted); font-size:0.87rem; margin-bottom:12px;">
+          PowerShell and Python to automate the repetitive parts of IT support, and AI tools
+          used deliberately to accelerate research, prototyping and troubleshooting &mdash;
+          while I remain responsible for the architecture, testing and final result.
+        </p>
+        <ul class="tags" style="gap:6px;">
+          <li>PowerShell &amp; Python</li>
+          <li>AI-Assisted Development</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PROJECTS ============ -->
 <section id="projects">
   <div class="wrap">
     <div class="reveal">
-      <p class="eyebrow">02 / Projects</p>
+      <p class="eyebrow">03 / Projects</p>
       <h2>What I&rsquo;ve built</h2>
+      <div class="project-filters" role="tablist" aria-label="Filter projects by category">
+        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-btn" data-filter="cybersecurity" role="tab" aria-selected="false">Cybersecurity</button>
+        <button class="filter-btn" data-filter="it-automation" role="tab" aria-selected="false">IT &amp; Automation</button>
+        <button class="filter-btn" data-filter="software-development" role="tab" aria-selected="false">Software Development</button>
+      </div>
     </div>
 
-    <!-- ---------- FEATURED: Lakat ---------- -->
-    <article class="project featured reveal" style="margin-top:30px;">
+    <p class="project-group-label">Featured security &amp; IT projects</p>
+
+    <!-- ---------- FEATURED: Skull Sentinel (flagship) ---------- -->
+    <article class="project featured reveal" data-category="cybersecurity" style="margin-top:18px;">
       <div class="project-body">
-        <div class="project-kicker">Featured · Android · Kotlin · Running on device</div>
-        <h3>Lakat</h3>
-        <p class="project-tagline">A trip planner for Panay Island.</p>
+        <div class="project-kicker">Flagship · Desktop · Python · Running on Windows</div>
+        <h3>Skull Sentinel</h3>
+        <p class="project-tagline">Threats end here.</p>
         <div class="project-cols">
           <p>
-            Plans a journey across Iloilo City jeepneys, Ceres buses, provincial vans and
-            tricycles, and tells you what it will cost. Existing planners stop at the city
-            limits; Lakat handles the part where you take a jeep to the terminal, a bus to
-            Kalibo and a van the rest of the way.
+            A Windows malware and phishing scanner. Hashes files against a local signature
+            database and flags double-extension tricks like <code>invoice.pdf.exe</code>.
+            Scores URLs for typosquatting, punycode homographs, raw IP addresses and
+            suspicious TLDs, then reads message text for urgency language and runs every
+            link it finds back through the URL checker.
           </p>
           <p>
-            Everything runs on the device. No server, no API key, and no network permission
-            in the manifest at all. The routing engine is pure Kotlin with no Android
-            dependency, so it compiles and tests on a plain JVM.
+            Flagged files are quarantined by moving them, not deleting them, and can be
+            restored. The status row refuses to claim real-time protection it does not have,
+            and every action lands in a local activity log, because a security tool should
+            not ask you to trust it silently.
           </p>
         </div>
 
-        <div class="shot-row">
+        <div class="shot-row wide">
           <figure>
-            <picture><source srcset="assets/lakat-results.webp" type="image/webp"><img src="assets/lakat-results.jpg" alt="Lakat search results: Sapian to Iloilo Terminal Market, three journey options" width="720" height="1435" style="aspect-ratio:720/1435" loading="lazy"></picture>
-            <figcaption>Three options ranked by generalised cost, not clock time</figcaption>
+            <picture><source srcset="assets/ss-dashboard.webp" type="image/webp"><img src="assets/ss-dashboard.jpg" alt="Skull Sentinel dashboard after a scan, showing seven suspicious links and the activity log" width="1100" height="741" style="aspect-ratio:1100/741" loading="lazy"></picture>
+            <figcaption>Status row reports only what the app actually knows</figcaption>
           </figure>
           <figure>
-            <picture><source srcset="assets/lakat-itinerary.webp" type="image/webp"><img src="assets/lakat-itinerary.jpg" alt="Lakat itinerary detail showing the schematic route map, legs and fares" width="720" height="1435" style="aspect-ratio:720/1435" loading="lazy"></picture>
-            <figcaption>Schematic map drawn on a raw Compose Canvas, no map SDK</figcaption>
+            <picture><source srcset="assets/ss-systools.webp" type="image/webp"><img src="assets/ss-systools.jpg" alt="Skull Sentinel system tools tab with deep scan and Windows repair launchers" width="1100" height="736" style="aspect-ratio:1100/736" loading="lazy"></picture>
+            <figcaption>Launches Windows&rsquo; own SFC, CHKDSK and DISM, does not reimplement them</figcaption>
           </figure>
         </div>
 
-        <div class="code-panel">
-          <div class="code-head">MultiModalRouter.kt · the search state</div>
-<pre><code>// A stop alone cannot express a transfer penalty: by the time
-// the search arrives it has forgotten which vehicle it rode in on.
-state = (stop, route currently aboard)
+        <p class="project-result"><strong>Demonstrates:</strong> practical malware/phishing detection engineering, and a security-first
+          instinct for honest status reporting over false reassurance &mdash; restore-friendly quarantine, not silent deletion.</p>
 
-// riding one more stop on the same route  -> free
-// boarding a different route              -> wait + transfer penalty</code></pre>
-        </div>
-
-        <ul class="cert-list" style="margin-top:20px;">
-          <li><span class="check">▹</span> Hand-written A* search over a route-expanded state space, not a library</li>
-          <li><span class="check">▹</span> Heuristic admissibility proven by test, not asserted: the same code runs as
-              Dijkstra at zero heuristic weight and both must return identical costs</li>
-          <li><span class="check">▹</span> 19 unit tests covering fares, transfers, the spatial index and itinerary continuity</li>
-          <li><span class="check">▹</span> GitHub Actions builds and tests every push, and publishes a signed APK on tag</li>
+        <ul class="tags" style="margin:18px 0 20px;">
+          <li>Python</li>
+          <li>pywebview</li>
+          <li>SHA256</li>
+          <li>Phishing Heuristics</li>
+          <li>PyInstaller</li>
         </ul>
-
-        <ul class="tags" style="margin:22px 0 22px;">
-          <li>Kotlin</li>
-          <li>Jetpack Compose</li>
-          <li>A* Pathfinding</li>
-          <li>Unit Testing</li>
-          <li>CI/CD</li>
-          <li>Offline-first</li>
-        </ul>
-        <a class="btn btn-primary" href="https://github.com/NitroAtomic/lakat" target="_blank" rel="noopener">
+        <a class="btn btn-primary" href="https://github.com/NitroAtomic/SkullSentinel" target="_blank" rel="noopener">
           View on GitHub &rarr;
         </a>
       </div>
     </article>
 
-    <!-- ---------- AccPH ---------- -->
-    <article class="project featured reveal" style="margin-top:26px;">
-      <div class="project-body">
-        <div class="project-kicker">Personal project · Full-stack · Phases 1&ndash;6 of 7 built</div>
-        <h3>AccPH</h3>
-        <p class="project-tagline">Real books for a Philippine business, not a toy ledger.</p>
-        <div class="project-cols">
-          <p>
-            A Philippine payroll and accounting system, built phase by phase: authentication
-            and six-role RBAC (enforced server-side, not just hidden buttons), employee and
-            attendance management, and a deterministic payroll engine that computes SSS,
-            PhilHealth, Pag-IBIG and BIR withholding tax from versioned government rate
-            tables &mdash; never from a model's guess.
-          </p>
-          <p>
-            Approving payroll auto-posts a real double-entry journal entry into a general
-            ledger. Recording a bill or invoice does the same for Accounts Payable and
-            Receivable, and paying one posts a second, separate entry for the cash movement.
-            The Trial Balance is computed live from posted entries only, so &ldquo;Balanced?
-            Yes&rdquo; actually has to be earned.
-          </p>
-        </div>
-
-        <div class="shot-row">
-          <figure>
-            <picture><source srcset="assets/accph-login.webp" type="image/webp"><img src="assets/accph-login.jpg" alt="AccPH login screen with its logo: a gold arrow mark with the Philippine sun and stars, above the tagline AI-Assisted General Accounting — Accurate, Explainable, Trusted" width="429" height="618" style="aspect-ratio:429/618" loading="lazy"></picture>
-            <figcaption>The actual tagline: Accurate &middot; Explainable &middot; Trusted &mdash; the design principle behind every choice below</figcaption>
-          </figure>
-          <figure>
-            <picture><source srcset="assets/accph-dashboard.webp" type="image/webp"><img src="assets/accph-dashboard.jpg" alt="AccPH dashboard showing total income, expenses, net income, a 30-day financial chart, quick actions and recent activity for Dente Trading Co." width="997" height="913" style="aspect-ratio:997/913" loading="lazy"></picture>
-            <figcaption>Compliance alerts, real activity, numbers explicitly marked "Available in Phase X" when they're not real yet</figcaption>
-          </figure>
-          <figure>
-            <picture><source srcset="assets/accph-ledger.webp" type="image/webp"><img src="assets/accph-ledger.jpg" alt="AccPH Chart of Accounts showing asset, liability, equity, revenue and expense accounts with codes and normal balances" width="892" height="817" style="aspect-ratio:892/817" loading="lazy"></picture>
-            <figcaption>The Chart of Accounts Payroll and AP/AR actually post into</figcaption>
-          </figure>
-        </div>
-        <div class="shot-row wide" style="margin-top:16px;">
-          <figure>
-            <picture><source srcset="assets/accph-copilot.webp" type="image/webp"><img src="assets/accph-copilot.jpg" alt="AccPH Accounting Copilot answering questions about unpaid bills, outstanding invoices, trial balance status, recent payroll runs and active employee count, all from real data" width="927" height="819" style="aspect-ratio:927/819" loading="lazy"></picture>
-            <figcaption>The free-tier Copilot: rule-based, not an LLM &mdash; every answer is pulled from real, live data</figcaption>
-          </figure>
-        </div>
-
-        <div class="code-panel">
-          <div class="code-head">payroll calculation engine &middot; a bug caught in live testing</div>
-<pre><code>// A Daily-rate employee's ₱700/day was fed straight into
-// SSS / PhilHealth / Pag-IBIG — all three are legally MONTHLY schemes.
-// A ₱700 "month" was qualifying for near-zero contributions.
-//
-// Fixed: convert to a monthly-equivalent salary first (rate × periods/month),
-// look up the correct bracket, then divide the contribution back down
-// to a per-period share. Monthly employees are unaffected (divisor = 1).</code></pre>
-        </div>
-
-        <ul class="cert-list" style="margin-top:20px;">
-          <li><span class="check">▹</span> Deterministic calculation engine &mdash; every peso comes from a versioned
-              rate table in the database, never computed by a model</li>
-          <li><span class="check">▹</span> "View Calculation" on every payroll line: names the exact rate-table row
-              and effective date that produced each number</li>
-          <li><span class="check">▹</span> Real government rates: PhilHealth, Pag-IBIG and BIR withholding cited
-              from primary sources; SSS cross-checked against a cited circular, one
-              transcription error caught and corrected before it shipped</li>
-          <li><span class="check">▹</span> Draft &rarr; Approve and Draft &rarr; Post workflows &mdash; the one
-              irreversible step is explicit and logged, everywhere</li>
-          <li><span class="check">▹</span> Free-tier AI honestly labeled as such: OCR receipt scanning with
-              per-field confidence levels, and a rule-based Copilot that says
-              "I don't know" rather than guessing</li>
-        </ul>
-
-        <ul class="tags" style="margin:22px 0 4px;">
-          <li>TypeScript</li>
-          <li>React</li>
-          <li>Node.js / Express</li>
-          <li>PostgreSQL</li>
-          <li>Prisma</li>
-          <li>RBAC</li>
-          <li>Double-entry Accounting</li>
-          <li>Tesseract OCR</li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- ---------- SE Aware ---------- -->
-    <article class="project reveal" style="margin-top:26px;">
-      <a class="project-shot" href="https://nitroatomic.github.io/SE-AWARE/index.html" target="_blank" rel="noopener">
-        <picture><source srcset="assets/se-aware.webp" type="image/webp"><img src="assets/se-aware.jpg" alt="Screenshot of the SE Aware homepage" width="1400" height="593" style="aspect-ratio:1400/593" loading="lazy"></picture>
-      </a>
-      <div class="project-body">
-        <div class="project-kicker">Live project · Security awareness</div>
-        <h3>SE Aware</h3>
-        <p class="project-tagline">Stay sharp online.</p>
-        <div class="project-cols">
-          <p>
-            A free training platform that teaches people to recognise social engineering before
-            it costs them. Social engineering does not break your software, it persuades you to
-            open the door yourself. SE Aware breaks down how phishing, smishing, vishing, spear
-            phishing and pretexting actually work, in plain language.
-          </p>
-          <p>
-            Six modules covering the attack types plus safe practice for remote work. A built-in
-            learning assistant lets someone paste in a suspicious message and get a plain-language
-            read on it without identifying themselves. Free, with no account and no signup.
-          </p>
-        </div>
-        <ul class="tags" style="margin:24px 0 22px;">
-          <li>Phishing</li>
-          <li>Smishing</li>
-          <li>Vishing</li>
-          <li>Spear Phishing</li>
-          <li>Pretexting</li>
-          <li>Security Awareness</li>
-        </ul>
-        <a class="btn btn-primary" href="https://nitroatomic.github.io/SE-AWARE/index.html" target="_blank" rel="noopener">
-          Visit SE Aware &rarr;
-        </a>
-      </div>
-    </article>
-
-
-    <!-- ---------- smaller projects ---------- -->
-    <article class="project reveal" style="margin-top:26px;">
+    <!-- ---------- Agent Juan Toolkit ---------- -->
+    <article class="project featured reveal" data-category="it-automation" style="margin-top:26px;">
       <div class="project-body">
         <div class="project-kicker">Windows · PowerShell · Running on a real machine</div>
         <h3>Agent Juan Toolkit</h3>
@@ -409,6 +346,9 @@ state = (stop, route currently aboard)
           </figure>
         </div>
 
+        <p class="project-result"><strong>Demonstrates:</strong> the bridge from IT support into automation &mdash; turning repeated
+          manual service-desk steps into verified, logged, one-click fixes rather than just faster typing.</p>
+
         <ul class="tags" style="margin:18px 0 20px;">
           <li>PowerShell</li>
           <li>Windows Forms</li>
@@ -421,52 +361,201 @@ state = (stop, route currently aboard)
       </div>
     </article>
 
-    <div class="project-grid">
-
-      <article class="project compact reveal">
-        <div class="project-body">
-          <div class="project-kicker">Desktop · Python · Running on Windows</div>
-          <h3>Skull Sentinel</h3>
-          <p class="project-tagline">Threats end here.</p>
+    <!-- ---------- SE Aware ---------- -->
+    <article class="project featured reveal" data-category="cybersecurity" style="margin-top:26px;">
+      <a class="project-shot" href="https://nitroatomic.github.io/SE-AWARE/index.html" target="_blank" rel="noopener">
+        <picture><source srcset="assets/se-aware.webp" type="image/webp"><img src="assets/se-aware.jpg" alt="Screenshot of the SE Aware homepage" width="1400" height="593" style="aspect-ratio:1400/593" loading="lazy"></picture>
+      </a>
+      <div class="project-body">
+        <div class="project-kicker">Live project · Security awareness</div>
+        <h3>SE Aware</h3>
+        <p class="project-tagline">Stay sharp online.</p>
+        <div class="project-cols">
           <p>
-            A Windows malware and phishing scanner. Hashes files against a local signature
-            database and flags double-extension tricks like <code>invoice.pdf.exe</code>.
-            Scores URLs for typosquatting, punycode homographs, raw IP addresses and
-            suspicious TLDs, then reads message text for urgency language and runs every
-            link it finds back through the URL checker.
+            A free training platform that teaches people to recognise social engineering before
+            it costs them. Social engineering does not break your software, it persuades you to
+            open the door yourself. SE Aware breaks down how phishing, smishing, vishing, spear
+            phishing and pretexting actually work, in plain language.
           </p>
           <p>
-            Flagged files are quarantined by moving them, not deleting them, and can be
-            restored. The status row refuses to claim real-time protection it does not have,
-            and every action lands in a local activity log, because a security tool should
-            not ask you to trust it silently.
+            Six modules covering the attack types plus safe practice for remote work. A built-in
+            learning assistant lets someone paste in a suspicious message and get a plain-language
+            read on it without identifying themselves. Free, with no account and no signup.
+          </p>
+        </div>
+        <p class="project-result"><strong>Demonstrates:</strong> that I treat cybersecurity as a people problem as much as a
+          technical one &mdash; the human layer, not just tools and scanners.</p>
+        <ul class="tags" style="margin:24px 0 22px;">
+          <li>Phishing</li>
+          <li>Smishing</li>
+          <li>Vishing</li>
+          <li>Spear Phishing</li>
+          <li>Pretexting</li>
+          <li>Security Awareness</li>
+        </ul>
+        <a class="btn btn-primary" href="https://nitroatomic.github.io/SE-AWARE/index.html" target="_blank" rel="noopener">
+          Visit SE Aware &rarr;
+        </a>
+      </div>
+    </article>
+
+    <p class="project-group-label" style="margin-top:48px;">Additional projects</p>
+
+    <!-- ---------- AccPH ---------- -->
+    <article class="project featured reveal" data-category="software-development" style="margin-top:18px;">
+      <div class="project-body">
+        <div class="project-kicker">Personal project · Full-stack · Phases 1&ndash;6 of 7 built</div>
+        <h3>AccPH</h3>
+        <p class="project-tagline">Real books for a Philippine business, not a toy ledger.</p>
+        <div class="project-cols">
+          <p>
+            A Philippine payroll and accounting system, built phase by phase: authentication
+            and six-role RBAC (enforced server-side, not just hidden buttons), employee and
+            attendance management, and a deterministic payroll engine that computes SSS,
+            PhilHealth, Pag-IBIG and BIR withholding tax from versioned government rate
+            tables &mdash; never from a model's guess.
+          </p>
+          <p>
+            Approving payroll auto-posts a real double-entry journal entry into a general
+            ledger. Recording a bill or invoice does the same for Accounts Payable and
+            Receivable, and paying one posts a second, separate entry for the cash movement.
+            The Trial Balance is computed live from posted entries only, so &ldquo;Balanced?
+            Yes&rdquo; actually has to be earned.
+          </p>
+        </div>
+
+        <div class="shot-row">
+          <figure>
+            <picture><source srcset="assets/accph-login.webp" type="image/webp"><img src="assets/accph-login.jpg" alt="AccPH login screen with its logo: a gold arrow mark with the Philippine sun and stars, above the tagline AI-Assisted General Accounting — Accurate, Explainable, Trusted" width="429" height="618" style="aspect-ratio:429/618" loading="lazy"></picture>
+            <figcaption>The actual tagline: Accurate &middot; Explainable &middot; Trusted &mdash; the design principle behind every choice below</figcaption>
+          </figure>
+          <figure>
+            <picture><source srcset="assets/accph-dashboard.webp" type="image/webp"><img src="assets/accph-dashboard.jpg" alt="AccPH dashboard showing total income, expenses, net income, a 30-day financial chart, quick actions and recent activity for Dente Trading Co." width="997" height="913" style="aspect-ratio:997/913" loading="lazy"></picture>
+            <figcaption>Compliance alerts, real activity, numbers explicitly marked "Available in Phase X" when they're not real yet</figcaption>
+          </figure>
+          <figure>
+            <picture><source srcset="assets/accph-ledger.webp" type="image/webp"><img src="assets/accph-ledger.jpg" alt="AccPH Chart of Accounts showing asset, liability, equity, revenue and expense accounts with codes and normal balances" width="892" height="817" style="aspect-ratio:892/817" loading="lazy"></picture>
+            <figcaption>The Chart of Accounts Payroll and AP/AR actually post into</figcaption>
+          </figure>
+        </div>
+        <div class="shot-row wide" style="margin-top:16px;">
+          <figure>
+            <picture><source srcset="assets/accph-copilot.webp" type="image/webp"><img src="assets/accph-copilot.jpg" alt="AccPH Accounting Copilot answering questions about unpaid bills, outstanding invoices, trial balance status, recent payroll runs and active employee count, all from real data" width="927" height="819" style="aspect-ratio:927/819" loading="lazy"></picture>
+            <figcaption>The free-tier Copilot: rule-based, not an LLM &mdash; every answer is pulled from real, live data</figcaption>
+          </figure>
+        </div>
+
+        <p class="project-result"><strong>Demonstrates:</strong> full-stack ownership of a domain most engineers avoid &mdash;
+          real accounting rules, real government compliance data, and honesty about what AI in the product can and can't do.</p>
+
+        <details class="tech-details">
+          <summary>Technical details &mdash; payroll engine, ledger design, engineering decisions</summary>
+          <div class="code-panel" style="margin-top:16px;">
+            <div class="code-head">payroll calculation engine &middot; a bug caught in live testing</div>
+<pre><code>// A Daily-rate employee's ₱700/day was fed straight into
+// SSS / PhilHealth / Pag-IBIG — all three are legally MONTHLY schemes.
+// A ₱700 "month" was qualifying for near-zero contributions.
+//
+// Fixed: convert to a monthly-equivalent salary first (rate × periods/month),
+// look up the correct bracket, then divide the contribution back down
+// to a per-period share. Monthly employees are unaffected (divisor = 1).</code></pre>
+          </div>
+
+          <ul class="cert-list" style="margin-top:20px;">
+            <li><span class="check">▹</span> Deterministic calculation engine &mdash; every peso comes from a versioned
+                rate table in the database, never computed by a model</li>
+            <li><span class="check">▹</span> "View Calculation" on every payroll line: names the exact rate-table row
+                and effective date that produced each number</li>
+            <li><span class="check">▹</span> Real government rates: PhilHealth, Pag-IBIG and BIR withholding cited
+                from primary sources; SSS cross-checked against a cited circular, one
+                transcription error caught and corrected before it shipped</li>
+            <li><span class="check">▹</span> Draft &rarr; Approve and Draft &rarr; Post workflows &mdash; the one
+                irreversible step is explicit and logged, everywhere</li>
+            <li><span class="check">▹</span> Free-tier AI honestly labeled as such: OCR receipt scanning with
+                per-field confidence levels, and a rule-based Copilot that says
+                "I don't know" rather than guessing</li>
+          </ul>
+        </details>
+
+        <ul class="tags" style="margin:22px 0 4px;">
+          <li>TypeScript</li>
+          <li>React</li>
+          <li>Node.js / Express</li>
+          <li>PostgreSQL</li>
+          <li>Prisma</li>
+          <li>RBAC</li>
+          <li>Double-entry Accounting</li>
+          <li>Tesseract OCR</li>
+        </ul>
+      </div>
+    </article>
+
+    <div class="project-grid">
+
+      <article class="project compact reveal" data-category="software-development">
+        <div class="project-body">
+          <div class="project-kicker">Android · Kotlin · Running on device</div>
+          <h3>Lakat</h3>
+          <p class="project-tagline">A trip planner for Panay Island.</p>
+          <p>
+            Plans a journey across Iloilo City jeepneys, Ceres buses, provincial vans and
+            tricycles, and tells you what it will cost. Existing planners stop at the city
+            limits; Lakat handles the part where you take a jeep to the terminal, a bus to
+            Kalibo and a van the rest of the way.
+          </p>
+          <p>
+            Everything runs on the device. No server, no API key, and no network permission
+            in the manifest at all. The routing engine is pure Kotlin with no Android
+            dependency, so it compiles and tests on a plain JVM.
           </p>
 
           <div class="shot-row wide">
             <figure>
-              <picture><source srcset="assets/ss-dashboard.webp" type="image/webp"><img src="assets/ss-dashboard.jpg" alt="Skull Sentinel dashboard after a scan, showing seven suspicious links and the activity log" width="1100" height="741" style="aspect-ratio:1100/741" loading="lazy"></picture>
-              <figcaption>Status row reports only what the app actually knows</figcaption>
+              <picture><source srcset="assets/lakat-results.webp" type="image/webp"><img src="assets/lakat-results.jpg" alt="Lakat search results: Sapian to Iloilo Terminal Market, three journey options" width="720" height="1435" style="aspect-ratio:720/1435" loading="lazy"></picture>
+              <figcaption>Three options ranked by generalised cost, not clock time</figcaption>
             </figure>
             <figure>
-              <picture><source srcset="assets/ss-systools.webp" type="image/webp"><img src="assets/ss-systools.jpg" alt="Skull Sentinel system tools tab with deep scan and Windows repair launchers" width="1100" height="736" style="aspect-ratio:1100/736" loading="lazy"></picture>
-              <figcaption>Launches Windows&rsquo; own SFC, CHKDSK and DISM, does not reimplement them</figcaption>
+              <picture><source srcset="assets/lakat-itinerary.webp" type="image/webp"><img src="assets/lakat-itinerary.jpg" alt="Lakat itinerary detail showing the schematic route map, legs and fares" width="720" height="1435" style="aspect-ratio:720/1435" loading="lazy"></picture>
+              <figcaption>Schematic map drawn on a raw Compose Canvas, no map SDK</figcaption>
             </figure>
           </div>
 
-          <ul class="tags" style="margin:18px 0 20px;">
-            <li>Python</li>
-            <li>pywebview</li>
-            <li>SHA256</li>
-            <li>Phishing Heuristics</li>
-            <li>PyInstaller</li>
+          <div class="code-panel">
+            <div class="code-head">MultiModalRouter.kt · the search state</div>
+<pre><code>// A stop alone cannot express a transfer penalty: by the time
+// the search arrives it has forgotten which vehicle it rode in on.
+state = (stop, route currently aboard)
+
+// riding one more stop on the same route  -> free
+// boarding a different route              -> wait + transfer penalty</code></pre>
+          </div>
+
+          <ul class="cert-list" style="margin-top:20px;">
+            <li><span class="check">▹</span> Hand-written A* search over a route-expanded state space, not a library</li>
+            <li><span class="check">▹</span> Heuristic admissibility proven by test, not asserted: the same code runs as
+                Dijkstra at zero heuristic weight and both must return identical costs</li>
+            <li><span class="check">▹</span> 19 unit tests covering fares, transfers, the spatial index and itinerary continuity</li>
+            <li><span class="check">▹</span> GitHub Actions builds and tests every push, and publishes a signed APK on tag</li>
           </ul>
-          <a class="btn btn-ghost" href="https://github.com/NitroAtomic/SkullSentinel" target="_blank" rel="noopener">
+
+          <p class="project-result"><strong>Demonstrates:</strong> the deepest algorithmic work in the portfolio &mdash;
+            a hand-written, test-proven pathfinding engine, not a library call.</p>
+
+          <ul class="tags" style="margin:22px 0 22px;">
+            <li>Kotlin</li>
+            <li>Jetpack Compose</li>
+            <li>A* Pathfinding</li>
+            <li>Unit Testing</li>
+            <li>CI/CD</li>
+            <li>Offline-first</li>
+          </ul>
+          <a class="btn btn-primary" href="https://github.com/NitroAtomic/lakat" target="_blank" rel="noopener">
             View on GitHub &rarr;
           </a>
         </div>
       </article>
 
-      <article class="project compact reveal">
+      <article class="project compact reveal" data-category="software-development">
         <div class="project-body">
           <div class="project-kicker">Live · Web · Full-stack</div>
           <h3>TROPA</h3>
@@ -494,6 +583,9 @@ state = (stop, route currently aboard)
             </figure>
           </div>
 
+          <p class="project-result"><strong>Demonstrates:</strong> full-stack product thinking beyond utility apps &mdash;
+            auth, social graph, live chat and a feed, shipped and live.</p>
+
           <ul class="tags" style="margin:18px 0 20px;">
             <li>Full-stack</li>
             <li>Auth</li>
@@ -515,7 +607,7 @@ state = (stop, route currently aboard)
 <!-- ============ EXPERIENCE ============ -->
 <section id="experience">
   <div class="wrap reveal">
-    <p class="eyebrow">03 / Experience</p>
+    <p class="eyebrow">04 / Experience</p>
     <h2>Where I&rsquo;ve worked</h2>
     <div class="timeline" style="margin-top:34px;">
 
@@ -574,7 +666,7 @@ state = (stop, route currently aboard)
 <!-- ============ EDUCATION ============ -->
 <section id="education">
   <div class="wrap reveal">
-    <p class="eyebrow">04 / Education &amp; Training</p>
+    <p class="eyebrow">05 / Education &amp; Training</p>
     <h2>Education &amp; Training</h2>
     <div class="grid-2" style="margin-top:26px;">
       <div class="card">
@@ -605,7 +697,7 @@ state = (stop, route currently aboard)
 <!-- ============ SKILLS + CERTS ============ -->
 <section id="skills">
   <div class="wrap reveal">
-    <p class="eyebrow">05 / Skills &amp; Certifications</p>
+    <p class="eyebrow">06 / Skills &amp; Certifications</p>
     <h2>What I bring</h2>
 
     <h3 style="margin:30px 0 14px;">IT support</h3>
@@ -770,7 +862,7 @@ state = (stop, route currently aboard)
 <!-- ============ CONTACT ============ -->
 <section id="contact">
   <div class="wrap reveal">
-    <p class="eyebrow">06 / Contact</p>
+    <p class="eyebrow">07 / Contact</p>
     <h2>Let&rsquo;s connect</h2>
     <p class="lead statement" style="margin-bottom:6px;">I keep systems running and people working.</p>
     <p class="lead" style="margin-bottom:28px;">

@@ -7,6 +7,25 @@
   root.classList.add('js');
 
   document.addEventListener('DOMContentLoaded', function () {
+    // --- project filters ---
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    var projectCards = document.querySelectorAll('.project[data-category]');
+    if (filterBtns.length && projectCards.length) {
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var target = btn.getAttribute('data-filter');
+          filterBtns.forEach(function (b) {
+            b.classList.toggle('is-active', b === btn);
+            b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+          });
+          projectCards.forEach(function (card) {
+            var matches = target === 'all' || card.getAttribute('data-category') === target;
+            card.classList.toggle('is-hidden', !matches);
+          });
+        });
+      });
+    }
+
     // --- active nav link ---
     var here = location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-links a[href]').forEach(function (a) {

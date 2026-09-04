@@ -28,6 +28,19 @@
 /* ---------- base ---------- */
 * { box-sizing: border-box; }
 
+/* Keyboard focus: on-brand instead of the browser default, but only for
+   keyboard/programmatic focus (:focus-visible) so mouse clicks don't show
+   a ring — matches how modern browsers already draw this distinction. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
@@ -323,7 +336,6 @@ section + section { padding-top: 0; }
 .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-@media (max-width: 760px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } }
 .step-num {
   font-family: var(--mono);
   font-size: 0.82rem;
@@ -399,7 +411,8 @@ section + section { padding-top: 0; }
   background: var(--bg-soft);
   border: 1px solid var(--border);
   border-radius: 999px;
-  padding: 7px 15px;
+  padding: 12px 18px;
+  min-height: 44px;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
@@ -891,6 +904,7 @@ footer {
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
   gap: 22px;
   margin-top: 26px;
 }

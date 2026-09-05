@@ -434,15 +434,6 @@ section + section { padding-top: 0; }
   margin: 34px 0 0;
 }
 
-.project-result {
-  font-size: 0.92rem;
-  color: var(--muted);
-  border-left: 2px solid var(--accent);
-  padding-left: 12px;
-  margin: 20px 0;
-}
-.project-result strong { color: var(--text); font-weight: 600; }
-
 .tech-details { margin-top: 18px; }
 .tech-details summary {
   font-family: var(--mono);

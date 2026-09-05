@@ -618,6 +618,7 @@ a.verify:hover { text-decoration: none; border-color: var(--accent); background:
 }
 
 /* ---------- contact ---------- */
+.contact-layout { grid-template-columns: 1.3fr 1fr; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 320px; }
 
 .contact-card { display: flex; align-items: center; gap: 15px; color: inherit; }

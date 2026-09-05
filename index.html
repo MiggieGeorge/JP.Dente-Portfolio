@@ -104,7 +104,7 @@
     <div class="stats">
       <div class="card stat reveal"><div class="num">13+</div><div class="label">Years in IT</div></div>
       <div class="card stat reveal"><div class="num">5</div><div class="label">Professional roles</div></div>
-      <div class="card stat reveal"><div class="num">13</div><div class="label">Certifications &amp; credentials</div></div>
+      <div class="card stat reveal"><div class="num">14</div><div class="label">Certifications &amp; credentials</div></div>
       <div class="card stat reveal"><div class="num">2024&ndash;Present</div><div class="label">BSIT, Network &amp; Cybersecurity</div></div>
     </div>
   </div>
@@ -490,72 +490,7 @@
       </div>
     </article>
 
-    <div class="project-grid">
-
-      <article class="project compact reveal" data-category="software-development">
-        <div class="project-body">
-          <div class="project-kicker">Android · Kotlin · Running on device</div>
-          <h3>Lakat</h3>
-          <p class="project-tagline">A trip planner for Panay Island.</p>
-          <p>
-            Plans a journey across Iloilo City jeepneys, Ceres buses, provincial vans and
-            tricycles, and tells you what it will cost. Existing planners stop at the city
-            limits; Lakat handles the part where you take a jeep to the terminal, a bus to
-            Kalibo and a van the rest of the way.
-          </p>
-          <p>
-            Everything runs on the device. No server, no API key, and no network permission
-            in the manifest at all. The routing engine is pure Kotlin with no Android
-            dependency, so it compiles and tests on a plain JVM.
-          </p>
-
-          <div class="shot-row">
-            <figure>
-              <picture><source srcset="assets/lakat-results.webp" type="image/webp"><img src="assets/lakat-results.jpg" alt="Lakat search results: Sapian to Iloilo Terminal Market, three journey options" width="720" height="1435" style="aspect-ratio:720/1435" loading="lazy"></picture>
-              <figcaption>Three options ranked by generalised cost, not clock time</figcaption>
-            </figure>
-            <figure>
-              <picture><source srcset="assets/lakat-itinerary.webp" type="image/webp"><img src="assets/lakat-itinerary.jpg" alt="Lakat itinerary detail showing the schematic route map, legs and fares" width="720" height="1435" style="aspect-ratio:720/1435" loading="lazy"></picture>
-              <figcaption>Schematic map drawn on a raw Compose Canvas, no map SDK</figcaption>
-            </figure>
-          </div>
-
-          <div class="code-panel">
-            <div class="code-head">MultiModalRouter.kt · the search state</div>
-<pre><code>// A stop alone cannot express a transfer penalty: by the time
-// the search arrives it has forgotten which vehicle it rode in on.
-state = (stop, route currently aboard)
-
-// riding one more stop on the same route  -> free
-// boarding a different route              -> wait + transfer penalty</code></pre>
-          </div>
-
-          <ul class="cert-list" style="margin-top:20px;">
-            <li><span class="check">▹</span> Hand-written A* search over a route-expanded state space, not a library</li>
-            <li><span class="check">▹</span> Heuristic admissibility proven by test, not asserted: the same code runs as
-                Dijkstra at zero heuristic weight and both must return identical costs</li>
-            <li><span class="check">▹</span> 19 unit tests covering fares, transfers, the spatial index and itinerary continuity</li>
-            <li><span class="check">▹</span> GitHub Actions builds and tests every push, and publishes a signed APK on tag</li>
-          </ul>
-
-          <p class="project-result"><strong>Demonstrates:</strong> the deepest algorithmic work in the portfolio &mdash;
-            a hand-written, test-proven pathfinding engine, not a library call.</p>
-
-          <ul class="tags" style="margin:22px 0 22px;">
-            <li>Kotlin</li>
-            <li>Jetpack Compose</li>
-            <li>A* Pathfinding</li>
-            <li>Unit Testing</li>
-            <li>CI/CD</li>
-            <li>Offline-first</li>
-          </ul>
-          <a class="btn btn-primary" href="https://github.com/NitroAtomic/lakat" target="_blank" rel="noopener">
-            View on GitHub &rarr;
-          </a>
-        </div>
-      </article>
-
-      <article class="project compact reveal" data-category="software-development">
+    <article class="project featured reveal" data-category="software-development" style="margin-top:26px;">
         <div class="project-body">
           <div class="project-kicker">Live · Web · Full-stack</div>
           <h3>TROPA</h3>
@@ -567,19 +502,28 @@ state = (stop, route currently aboard)
           </p>
           <p>
             The nostalgia is in the feature set, not just the styling: a <strong>Slam Book</strong>
-            with nickname, motto, hugot line and ka-love team, plus Laro, Capsule, Awards and a
-            &ldquo;who viewed your profile&rdquo; counter. Choosing those over a generic bio is
-            the whole point of the project.
+            with nickname, motto, hugot line and ka-love team, plus Laro, Capsule and Awards in
+            the nav. Profiles carry a relationship status, mutual friends, a profile song that
+            plays while you browse, linked YouTube/Facebook/Instagram/TikTok, and a &ldquo;who
+            viewed your profile&rdquo; counter. Choosing those over a generic bio is the whole
+            point of the project. The footer says it plainly: <em>made with nostalgia,
+            independent, not affiliated with any other service.</em>
           </p>
 
-          <div class="shot-row wide">
+          <div class="shot-row">
             <figure>
-              <picture><source srcset="assets/tropa-feed.webp" type="image/webp"><img src="assets/tropa-feed.jpg" alt="TROPA home feed with post composer, a post, and friend suggestions" width="1100" height="896" style="aspect-ratio:1100/896" loading="lazy"></picture>
-              <figcaption>Feed, composer, friend suggestions</figcaption>
+              <picture><source srcset="assets/tropa-landing.webp" type="image/webp"><img src="assets/tropa-landing.jpg" alt="TROPA landing page with logo, tagline Ang tambayan ng mga tropa online, and Create an account / Log in buttons" width="1280" height="720" style="aspect-ratio:1280/720" loading="lazy"></picture>
+              <figcaption>Landing page &mdash; the nostalgia starts here</figcaption>
             </figure>
             <figure>
-              <picture><source srcset="assets/tropa-profile.webp" type="image/webp"><img src="assets/tropa-profile.jpg" alt="TROPA profile page showing the slam book and profile viewers" width="1100" height="827" style="aspect-ratio:1100/827" loading="lazy"></picture>
-              <figcaption>The Slam Book, and who viewed your profile</figcaption>
+              <picture><source srcset="assets/tropa-feed.webp" type="image/webp"><img src="assets/tropa-feed.jpg" alt="TROPA home feed with post composer, a post, friend suggestions, and two live chat windows open" width="1280" height="720" style="aspect-ratio:1280/720" loading="lazy"></picture>
+              <figcaption>Feed, composer, and live chat running in the background</figcaption>
+            </figure>
+          </div>
+          <div class="shot-row wide" style="margin-top:16px;">
+            <figure>
+              <picture><source srcset="assets/tropa-profile.webp" type="image/webp"><img src="assets/tropa-profile.jpg" alt="TROPA profile page showing relationship status, member since, location, school, linked social accounts, About Me, Interests, a now-playing profile song, mutual friends and the Slam Book" width="1280" height="720" style="aspect-ratio:1280/720" loading="lazy"></picture>
+              <figcaption>Full profile: status, socials, mutual friends, a playing profile song, and the Slam Book below</figcaption>
             </figure>
           </div>
 
@@ -598,8 +542,6 @@ state = (stop, route currently aboard)
           </a>
         </div>
       </article>
-
-    </div>
 
   </div>
 </section>
@@ -772,6 +714,12 @@ state = (stop, route currently aboard)
           <span class="issuer">SkillUp · Sep 2026</span>
           <a class="verify" href="https://coursera.org/verify/P6BQ6FH9Q1Q9" target="_blank" rel="noopener">Verify</a>
         </li>
+        <li>
+          <span class="check">✓</span>
+          <span class="cert-name">Ethical Hacking with Kali Linux</span>
+          <span class="issuer">IBM · Sep 2026</span>
+          <a class="verify" href="https://coursera.org/verify/Z5HA1HEMR9S6" target="_blank" rel="noopener">Verify</a>
+        </li>
       </ul>
 
       <h4 class="cert-category-heading">IT &amp; Professional</h4>
@@ -864,28 +812,32 @@ state = (stop, route currently aboard)
   <div class="wrap reveal">
     <p class="eyebrow">07 / Contact</p>
     <h2>Let&rsquo;s connect</h2>
-    <p class="lead statement" style="margin-bottom:6px;">I keep systems running and people working.</p>
-    <p class="lead" style="margin-bottom:28px;">
-      I&rsquo;m open to opportunities in IT support, service desk, networking and cybersecurity
-      where I can solve technical problems, build practical solutions, and keep growing as a
-      security-focused IT professional. Have something worth discussing? Email or LinkedIn are
-      the fastest ways to reach me.
-    </p>
 
-    <div class="contact-grid">
-      <a class="card contact-card" href="mailto:paopaodente@gmail.com">
-        <span class="ico">✉</span>
-        <span><span class="k">Email</span><br><span class="v">paopaodente@gmail.com</span></span>
-      </a>
-      <a class="card contact-card" href="https://www.linkedin.com/in/juan-paolo-dente-b09b8595/" target="_blank" rel="noopener">
-        <span class="ico">in</span>
-        <span><span class="k">LinkedIn</span><br><span class="v">juan-paolo-dente</span></span>
-      </a>
+    <div class="grid-2 contact-layout" style="margin-top:22px; align-items:start;">
+      <div>
+        <p class="lead statement" style="margin-bottom:6px;">I keep systems running and people working.</p>
+        <p class="lead">
+          I&rsquo;m open to opportunities in IT support, service desk, networking and cybersecurity
+          where I can solve technical problems, build practical solutions, and keep growing as a
+          security-focused IT professional. Have something worth discussing? Email or LinkedIn are
+          the fastest ways to reach me.
+        </p>
+        <p class="lead" style="margin-top:22px; font-size:0.92rem;">
+          Based in the Philippines
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="card contact-card" href="mailto:paopaodente@gmail.com">
+          <span class="ico">✉</span>
+          <span><span class="k">Email</span><br><span class="v">paopaodente@gmail.com</span></span>
+        </a>
+        <a class="card contact-card" href="https://www.linkedin.com/in/juan-paolo-dente-b09b8595/" target="_blank" rel="noopener">
+          <span class="ico">in</span>
+          <span><span class="k">LinkedIn</span><br><span class="v">juan-paolo-dente</span></span>
+        </a>
+      </div>
     </div>
-
-    <p class="lead" style="margin-top:22px; font-size:0.92rem;">
-      Based in the Philippines
-    </p>
   </div>
 </section>
 

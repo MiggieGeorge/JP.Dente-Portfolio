@@ -279,6 +279,7 @@ section + section { padding-top: 0; }
   transition: transform 0.15s, border-color 0.15s, background 0.15s;
 }
 .btn:hover { text-decoration: none; transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.97); transition-duration: 0.08s; }
 .btn-primary {
   background: var(--accent);
   border-color: var(--accent);
@@ -434,9 +435,10 @@ section + section { padding-top: 0; }
   padding: 12px 18px;
   min-height: 44px;
   cursor: pointer;
-  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.15s;
 }
 .filter-btn:hover { color: var(--text); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.filter-btn:active { transform: scale(0.96); transition-duration: 0.08s; }
 .filter-btn.is-active {
   color: #04150c;
   background: var(--accent);

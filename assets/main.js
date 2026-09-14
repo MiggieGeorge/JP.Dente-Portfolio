@@ -648,6 +648,81 @@
     }
 
 
+    // --- hero terminal: small easter-egg command box, purely additive.
+    // Every piece of content it can show already exists on the page in plain
+    // HTML, so a JS failure or a screen reader just means this box is inert. ---
+    (function () {
+      var output = document.getElementById('term-output');
+      var form = document.getElementById('term-form');
+      var input = document.getElementById('term-input');
+      if (!output || !form || !input) return;
+
+      function printLine(html, isEcho) {
+        var p = document.createElement('p');
+        p.className = 'term-line' + (isEcho ? ' term-echo' : '');
+        p.innerHTML = html;
+        output.appendChild(p);
+        output.scrollTop = output.scrollHeight;
+      }
+
+      var COMMANDS = {
+        help: function () {
+          return 'Commands: <span class="term-cmd">whoami</span>, <span class="term-cmd">about</span>, ' +
+            '<span class="term-cmd">projects</span>, <span class="term-cmd">skills</span>, ' +
+            '<span class="term-cmd">contact</span>, <span class="term-cmd">resume</span>, ' +
+            '<span class="term-cmd">clear</span>';
+        },
+        whoami: function () {
+          return 'Juan Paolo Dente &mdash; 13+ years in IT, currently at DPWH, finishing a BSIT ' +
+            'in Network &amp; Cybersecurity. Open to IT support, service desk, networking and ' +
+            'cybersecurity roles.';
+        },
+        about: function () {
+          window.location.hash = '#about';
+          return 'Jumping to About&hellip;';
+        },
+        projects: function () {
+          window.location.hash = '#projects';
+          return 'Skull Sentinel, Agent Juan Toolkit, SE Aware, AccPH, TROPA. Scrolling to Projects&hellip;';
+        },
+        skills: function () {
+          window.location.hash = '#skills';
+          return 'IT support, networking, cybersecurity, PowerShell/Python/TypeScript, 14 certifications. Scrolling to Skills&hellip;';
+        },
+        resume: function () {
+          window.open('assets/Juan_Paolo_Dente_Resume.pdf', '_blank', 'noopener');
+          return 'Opening r&eacute;sum&eacute; in a new tab&hellip;';
+        },
+        contact: function () {
+          window.location.hash = '#contact';
+          return 'paopaodente@gmail.com &middot; <a href="https://www.linkedin.com/in/juan-paolo-dente-b09b8595/" target="_blank" rel="noopener">LinkedIn</a>. Scrolling to Contact&hellip;';
+        },
+        clear: function () {
+          output.innerHTML = '';
+          return null;
+        },
+        'sudo': function () {
+          return 'Nice try &mdash; you already have permission. Try <span class="term-cmd">contact</span>.';
+        }
+      };
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var raw = input.value.trim();
+        if (!raw) return;
+        printLine(raw.replace(/</g, '&lt;'), true);
+        input.value = '';
+        var key = raw.toLowerCase().split(/\s+/)[0];
+        var handler = COMMANDS[key];
+        if (handler) {
+          var reply = handler();
+          if (reply) printLine(reply, false);
+        } else {
+          printLine('Command not found: "' + raw.replace(/</g, '&lt;') + '". Type <span class="term-cmd">help</span> for the list.', false);
+        }
+      });
+    })();
+
     // --- typed role line ---
     var typed = document.querySelector('[data-typed]');
     if (typed) {

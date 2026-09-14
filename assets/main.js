@@ -673,7 +673,7 @@
             '<span class="term-cmd">clear</span>';
         },
         whoami: function () {
-          return 'Juan Paolo Dente &mdash; 13+ years in IT, currently at DPWH, finishing a BSIT ' +
+          return 'Juan Paolo Dente, 13+ years in IT, currently at DPWH, finishing a BSIT ' +
             'in Network &amp; Cybersecurity. Open to IT support, service desk, networking and ' +
             'cybersecurity roles.';
         },
@@ -702,7 +702,7 @@
           return null;
         },
         'sudo': function () {
-          return 'Nice try &mdash; you already have permission. Try <span class="term-cmd">contact</span>.';
+          return 'Nice try, you already have permission. Try <span class="term-cmd">contact</span>.';
         }
       };
 

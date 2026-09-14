@@ -274,9 +274,8 @@
     }
 
     // Draws a single character to a small canvas and returns it as a texture,
-    // used for every "glyph" that needs to face the camera — the matrix rain
-    // and the binary packets travelling the hero globe's arcs. Pass white to
-    // get a neutral glyph that a material's vertexColors can then tint/dim.
+    // used for every glyph in the 3D matrix rain below. Pass white so a
+    // material's vertexColors can tint/dim it per column and per depth tier.
     function makeGlyphTexture(ch, colorHex, blurPx) {
       var size = 64;
       var cnv = document.createElement('canvas');

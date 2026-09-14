@@ -63,17 +63,6 @@ input:focus-visible,
 
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
-/* ---------- custom cursor: a small green reticle, on-brand with the matrix theme ----------
-   Outline version by default, filled centre on anything clickable so it still reads
-   as an affordance. SVG cursors are ignored on touch devices, so this only shows up
-   where a real mouse is already in play. */
-html {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' stroke='%2300ff41' stroke-width='1.6' fill='none'/%3E%3Cline x1='12' y1='1' x2='12' y2='6' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='12' y1='18' x2='12' y2='23' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='1' y1='12' x2='6' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='18' y1='12' x2='23' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%2300ff41'/%3E%3C/svg%3E") 12 12, auto;
-}
-a, button, input, summary, .filter-btn, .btn, .to-top, [role="tab"] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' stroke='%2300ff41' stroke-width='1.6' fill='rgba(0,255,65,0.22)'/%3E%3Cline x1='12' y1='1' x2='12' y2='6' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='12' y1='18' x2='12' y2='23' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='1' y1='12' x2='6' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='18' y1='12' x2='23' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%2300ff41'/%3E%3C/svg%3E") 12 12, pointer;
-}
-
 body {
   margin: 0;
   background: var(--bg);
@@ -704,7 +693,6 @@ footer {
   .cert-list .issuer { margin-left: 26px; padding-left: 0; white-space: normal; }
   .cert-list .verify { margin-left: auto; }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .article { padding-top: 40px; }
 }
 
 /* very small phones: shed one more nav item and tighten spacing */
@@ -841,7 +829,18 @@ footer {
 .to-top:hover { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 640px) { .to-top { right: 14px; bottom: 14px; width: 40px; height: 40px; } }
 
-/* ---------- 8. matrix rain backdrop ---------- */
+/* ---------- 8. custom cursor: a small green reticle, on-brand with the theme ----------
+   Outline by default, filled centre on anything clickable so it still reads as an
+   affordance. SVG cursors are simply ignored on touch devices, so this only ever
+   shows up where a real mouse is already in play — no extra guard needed. */
+html {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' stroke='%2300ff41' stroke-width='1.6' fill='none'/%3E%3Cline x1='12' y1='1' x2='12' y2='6' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='12' y1='18' x2='12' y2='23' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='1' y1='12' x2='6' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='18' y1='12' x2='23' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%2300ff41'/%3E%3C/svg%3E") 12 12, auto;
+}
+a, button, input, summary, .filter-btn, .btn, .to-top, [role="tab"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' stroke='%2300ff41' stroke-width='1.6' fill='rgba(0,255,65,0.22)'/%3E%3Cline x1='12' y1='1' x2='12' y2='6' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='12' y1='18' x2='12' y2='23' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='1' y1='12' x2='6' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='18' y1='12' x2='23' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%2300ff41'/%3E%3C/svg%3E") 12 12, pointer;
+}
+
+/* ---------- 9. matrix rain backdrop ---------- */
 #matrix {
   position: fixed;
   inset: 0;
@@ -924,33 +923,6 @@ footer {
   .shot-row figure { flex: 1 1 140px; }
   .shot-row figcaption { font-size: 0.66rem; }
 }
-
-/* ---------- two-up grid for the smaller projects ---------- */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-  gap: 22px;
-  margin-top: 26px;
-}
-.project.compact .project-body { padding: 22px 6px 4px; }
-.project.compact p { color: var(--muted); font-size: 0.94rem; }
-.project.compact code {
-  font-family: var(--mono);
-  font-size: 0.86em;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border-radius: 4px;
-  padding: 1px 5px;
-}
-@media (max-width: 860px) {
-  .project-grid { grid-template-columns: 1fr; gap: 18px; }
-}
-
-/* keep the call-to-action pinned to the bottom so the two cards line up */
-.project.compact { display: flex; }
-.project.compact .project-body { display: flex; flex-direction: column; flex: 1; }
-.project.compact .project-body .btn { margin-top: auto; align-self: flex-start; }
 
 /* desktop/browser screenshots are wide, so they stack rather than sit side by side */
 .shot-row.wide { flex-direction: column; gap: 16px; }

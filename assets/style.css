@@ -829,15 +829,21 @@ footer {
 .to-top:hover { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 640px) { .to-top { right: 14px; bottom: 14px; width: 40px; height: 40px; } }
 
-/* ---------- 8. custom cursor: a small green reticle, on-brand with the theme ----------
-   Outline by default, filled centre on anything clickable so it still reads as an
-   affordance. SVG cursors are simply ignored on touch devices, so this only ever
-   shows up where a real mouse is already in play — no extra guard needed. */
+/* ---------- 8. custom cursor: the user's own 3D logo mark ---------- a raster
+   image rather than the inline SVGs used elsewhere, since it's a detailed glossy
+   render, not a simple shape. Shrunk to 32x48 (any smaller and the shading turns
+   into an unreadable blob — this is already close to that edge). Cursor images
+   render at native pixel size with no browser-side scaling, so this will look
+   soft rather than crisp on very high-DPI displays; that's a hard limitation of
+   custom cursors generally, not something fixable in CSS. Hover swaps to a
+   slightly larger, brightened version of the same asset as the affordance cue,
+   since a raster image can't pick up a CSS-driven glow the way the SVG cursors
+   elsewhere on the page can. */
 html {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' stroke='%2300ff41' stroke-width='1.6' fill='none'/%3E%3Cline x1='12' y1='1' x2='12' y2='6' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='12' y1='18' x2='12' y2='23' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='1' y1='12' x2='6' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='18' y1='12' x2='23' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%2300ff41'/%3E%3C/svg%3E") 12 12, auto;
+  cursor: url("cursor-logo.png") 2 2, auto;
 }
 a, button, input, summary, .filter-btn, .btn, .to-top, [role="tab"] {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='7' stroke='%2300ff41' stroke-width='1.6' fill='rgba(0,255,65,0.22)'/%3E%3Cline x1='12' y1='1' x2='12' y2='6' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='12' y1='18' x2='12' y2='23' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='1' y1='12' x2='6' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Cline x1='18' y1='12' x2='23' y2='12' stroke='%2300ff41' stroke-width='1.6'/%3E%3Ccircle cx='12' cy='12' r='1.3' fill='%2300ff41'/%3E%3C/svg%3E") 12 12, pointer;
+  cursor: url("cursor-logo-hover.png") 3 3, pointer;
 }
 
 /* ---------- 9. matrix rain backdrop ---------- */

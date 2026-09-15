@@ -106,7 +106,7 @@
     <div class="stats">
       <div class="card stat reveal"><div class="num">13+</div><div class="label">Years in IT</div></div>
       <div class="card stat reveal"><div class="num">5</div><div class="label">Professional roles</div></div>
-      <div class="card stat reveal"><div class="num">14</div><div class="label">Certifications &amp; credentials</div></div>
+      <div class="card stat reveal"><div class="num">15</div><div class="label">Certifications &amp; credentials</div></div>
       <div class="card stat reveal"><div class="num">2024&ndash;Present</div><div class="label">BSIT, Network &amp; Cybersecurity</div></div>
     </div>
   </div>
@@ -244,6 +244,7 @@
         <button class="filter-btn" data-filter="cybersecurity" role="tab" aria-selected="false">Cybersecurity</button>
         <button class="filter-btn" data-filter="it-automation" role="tab" aria-selected="false">IT &amp; Automation</button>
         <button class="filter-btn" data-filter="software-development" role="tab" aria-selected="false">Software Development</button>
+        <button class="filter-btn" data-filter="seo-marketing" role="tab" aria-selected="false">SEO &amp; Marketing</button>
       </div>
     </div>
 
@@ -390,6 +391,75 @@
         <a class="btn btn-primary" href="https://nitroatomic.github.io/SE-AWARE/index.html" target="_blank" rel="noopener">
           Visit SE Aware &rarr;
         </a>
+      </div>
+    </article>
+
+    <!-- ---------- Tanaw ---------- -->
+    <article class="project featured reveal" data-category="seo-marketing" style="margin-top:26px;">
+      <div class="project-body">
+        <div class="project-kicker">Personal project · Client-side web app · Nothing ever leaves the browser</div>
+        <h3>Tanaw</h3>
+        <p class="project-tagline">SEO tools that never phone home.</p>
+        <div class="project-cols">
+          <p>
+            An SEO toolkit built while working through an SEO &amp; content marketing course, for
+            practicing what each lesson taught on real pages instead of just reading about it.
+            Most SEO tools work by crawling a URL for you. Tanaw doesn&rsquo;t: you paste in a
+            page&rsquo;s HTML and it runs entirely through the browser&rsquo;s own DOMParser, so
+            there is no server fetching your (or anyone else&rsquo;s) site in the background.
+            &ldquo;Nothing you paste here is sent anywhere&rdquo; is a promise the app can
+            actually keep, because it has no way to send it anywhere in the first place.
+          </p>
+          <p>
+            Six tools in one: an on-page audit (title/meta length, heading hierarchy, alt text,
+            URL structure, Open Graph tags, structured data, AI-answer-engine readiness), a
+            keyword analyzer with readability scoring and a competitor content-gap check, a
+            technical checker for robots.txt/sitemap.xml and duplicate titles across pages, a
+            strategy builder that turns keywords into a step-by-step plan, a video SEO checker
+            for YouTube titles/descriptions/tags, and a manual link-building tracker for logging
+            outreach by hand, since real backlink discovery would mean crawling too.
+          </p>
+        </div>
+
+        <div class="shot-row wide">
+          <figure>
+            <picture><source srcset="assets/tanaw-audit.webp" type="image/webp"><img src="assets/tanaw-audit.jpg" alt="Tanaw on-page audit results showing a score of 88, word and link counts, and a list of pass/warn checks" width="1300" height="1083" style="aspect-ratio:1300/1083" loading="lazy"></picture>
+            <figcaption>Every check explains itself instead of just handing back a number</figcaption>
+          </figure>
+          <figure>
+            <picture><source srcset="assets/tanaw-video.webp" type="image/webp"><img src="assets/tanaw-video.jpg" alt="Tanaw video SEO checker showing a perfect score of 100 for a sample YouTube title, description and tags" width="1300" height="1083" style="aspect-ratio:1300/1083" loading="lazy"></picture>
+            <figcaption>YouTube is the second-biggest search engine, so it gets its own checker</figcaption>
+          </figure>
+          <figure>
+            <picture><source srcset="assets/tanaw-links.webp" type="image/webp"><img src="assets/tanaw-links.jpg" alt="Tanaw link-building tracker showing a logged outreach entry with site, anchor text, tactic and status" width="1300" height="1083" style="aspect-ratio:1300/1083" loading="lazy"></picture>
+            <figcaption>A CRM-style log for outreach, since Tanaw can&rsquo;t crawl the web to find links itself</figcaption>
+          </figure>
+        </div>
+
+        <details class="tech-details">
+          <summary>Technical details &mdash; the shared-database security rule</summary>
+          <div class="code-panel" style="margin-top:16px;">
+            <div class="code-head">audit history &amp; link tracker &middot; treating saved data as untrusted</div>
+<pre><code>// Every viewer who opens this artifact shares the same database, so a
+// saved backlink entry is exactly as untrusted as anything pasted into
+// the tools above &mdash; someone else's saved note could contain a
+// script tag. esc() before it ever touches innerHTML, no exceptions:
+db.collection("backlinks").get().then(function(snap){
+  el.innerHTML = snap.docs.map(function(d){
+    return esc(d.data().site);
+  }).join("");
+});</code></pre>
+          </div>
+        </details>
+
+        <ul class="tags" style="margin:22px 0 4px;">
+          <li>JavaScript</li>
+          <li>DOMParser</li>
+          <li>No Backend</li>
+          <li>No Data Collection</li>
+          <li>On-Page SEO</li>
+          <li>YouTube SEO</li>
+        </ul>
       </div>
     </article>
 
@@ -730,6 +800,16 @@
           <span class="cert-name">Computer Hardware Servicing NC II</span>
           <span class="issuer">TESDA · Sep 2011</span>
           <span class="verify muted-code">NC II</span>
+        </li>
+      </ul>
+
+      <h4 class="cert-category-heading">SEO &amp; Marketing</h4>
+      <ul class="cert-list">
+        <li>
+          <span class="check">✓</span>
+          <span class="cert-name">Search Engine Optimization and Content Marketing</span>
+          <span class="issuer">IBM · Sep 2026</span>
+          <a class="verify" href="https://coursera.org/verify/U8VCDTNG4G0R" target="_blank" rel="noopener">Verify</a>
         </li>
       </ul>
 

@@ -693,7 +693,6 @@ footer {
   .cert-list .issuer { margin-left: 26px; padding-left: 0; white-space: normal; }
   .cert-list .verify { margin-left: auto; }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .article { padding-top: 40px; }
 }
 
 /* very small phones: shed one more nav item and tighten spacing */
@@ -830,7 +829,24 @@ footer {
 .to-top:hover { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 640px) { .to-top { right: 14px; bottom: 14px; width: 40px; height: 40px; } }
 
-/* ---------- 8. matrix rain backdrop ---------- */
+/* ---------- 8. custom cursor: the user's own 3D logo mark ---------- a raster
+   image rather than the inline SVGs used elsewhere, since it's a detailed glossy
+   render, not a simple shape. Shrunk to 32x48 (any smaller and the shading turns
+   into an unreadable blob — this is already close to that edge). Cursor images
+   render at native pixel size with no browser-side scaling, so this will look
+   soft rather than crisp on very high-DPI displays; that's a hard limitation of
+   custom cursors generally, not something fixable in CSS. Hover swaps to a
+   slightly larger, brightened version of the same asset as the affordance cue,
+   since a raster image can't pick up a CSS-driven glow the way the SVG cursors
+   elsewhere on the page can. */
+html {
+  cursor: url("cursor-logo.png") 2 2, auto;
+}
+a, button, input, summary, .filter-btn, .btn, .to-top, [role="tab"] {
+  cursor: url("cursor-logo-hover.png") 3 3, pointer;
+}
+
+/* ---------- 9. matrix rain backdrop ---------- */
 #matrix {
   position: fixed;
   inset: 0;
@@ -913,33 +929,6 @@ footer {
   .shot-row figure { flex: 1 1 140px; }
   .shot-row figcaption { font-size: 0.66rem; }
 }
-
-/* ---------- two-up grid for the smaller projects ---------- */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: start;
-  gap: 22px;
-  margin-top: 26px;
-}
-.project.compact .project-body { padding: 22px 6px 4px; }
-.project.compact p { color: var(--muted); font-size: 0.94rem; }
-.project.compact code {
-  font-family: var(--mono);
-  font-size: 0.86em;
-  color: var(--accent);
-  background: var(--accent-dim);
-  border-radius: 4px;
-  padding: 1px 5px;
-}
-@media (max-width: 860px) {
-  .project-grid { grid-template-columns: 1fr; gap: 18px; }
-}
-
-/* keep the call-to-action pinned to the bottom so the two cards line up */
-.project.compact { display: flex; }
-.project.compact .project-body { display: flex; flex-direction: column; flex: 1; }
-.project.compact .project-body .btn { margin-top: auto; align-self: flex-start; }
 
 /* desktop/browser screenshots are wide, so they stack rather than sit side by side */
 .shot-row.wide { flex-direction: column; gap: 16px; }

@@ -123,10 +123,12 @@ To update later, drag the folder again (or connect it to GitHub as in Option B).
 
 ## Live
 
-Deployed at **https://miggiegeorge.github.io/JP.Dente-Portfolio/** — `og:url`, the JSON-LD
+Deployed at **https://nitroatomic.github.io/** — `og:url`, the JSON-LD
 `"url"`, and the `og:image`/`twitter:image`/JSON-LD `"image"` paths are all set to this
-real address. If the site ever moves to a different URL, update those same spots in
-`index.html`'s `<head>`.
+real address. It's a user/org page (served from the root, no subpath), which is also why
+`404.html`'s asset and nav links are root-relative (`/assets/...`) rather than prefixed
+with a repo name. If the site ever moves to a different URL or a project-page subpath,
+update `index.html`'s `<head>`, `404.html`'s links, `sitemap.xml` and `robots.txt` together.
 
 ## What else got added
 

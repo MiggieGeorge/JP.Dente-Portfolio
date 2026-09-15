@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://miggiegeorge.github.io/JP.Dente-Portfolio/sitemap.xml
+Sitemap: https://nitroatomic.github.io/sitemap.xml
